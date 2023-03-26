@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const { usersController } = require('../controllers');
+const { paginate } = require('../middleware');
 
 // /api/users
 const usersRouter = Router();
@@ -7,7 +8,7 @@ const usersRouter = Router();
 usersRouter
   .route('/')
   .post(usersController.createUser)
-  .get(usersController.getUsers);
+  .get(paginate.paginateUser, usersController.getUsers);
 
 usersRouter
   .route('/:userId')
