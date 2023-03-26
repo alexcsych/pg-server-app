@@ -7,12 +7,12 @@ const usersRouter = Router();
 usersRouter
   .route('/')
   .post(usersController.createUser)
-  .get((req, res) => res.send('ok'));
+  .get(usersController.getUsers);
 
 usersRouter
-  .route('/:id')
+  .route('/:userId')
   .post(() => {})
   .get((req, res) => res.send('ok1'))
-  .delete(() => {});
+  .delete(usersController.deleteUser);
 
 module.exports = usersRouter;

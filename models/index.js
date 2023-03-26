@@ -7,7 +7,7 @@ const connectionConfig = {
   port: '5432',
   database: 'phones_sales',
   user: 'postgres',
-  password: 'admin',
+  password: '2005',
 };
 
 const pool = new Pool(connectionConfig);
