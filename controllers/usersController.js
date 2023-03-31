@@ -21,6 +21,21 @@ module.exports.getUsers = async (req, res, next) => {
   }
 };
 
+module.exports.updateUser = async (req, res, next) => {
+  const { body } = req;
+  const { userId } = req.params;
+
+  try {
+    const updatedUser = await User.updateById(userId, body);
+    if (updatedUser) {
+      return res.status(202).send(updatedUser);
+    }
+    res.status(404).send('User Not Found');
+  } catch (err) {
+    next(err);
+  }
+};
+
 module.exports.deleteUser = async (req, res, next) => {
   const { userId } = req.params;
 
