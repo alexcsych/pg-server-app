@@ -20,8 +20,6 @@ PATCH http://localhost:5000/api/users/5 HTTP/1.1
 Content-Type: application/json
 
 {
-    "firstName": "Testowka",
-    "lastName":"Testovychs",
-    "email":"tests55@gmail.com",
-    "tel": "+380235599997"
+    "email":"testd22@gmail.com",
+    "tel": "+380535599997"
 }

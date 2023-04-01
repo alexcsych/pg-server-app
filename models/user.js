@@ -34,11 +34,18 @@ class User {
   }
   static getById () {}
   static async updateById (id, { firstName, lastName, email, tel }) {
+    const valuesToUpdate = [];
+    console.log('valuesToUpdate.length :>> ', valuesToUpdate.length);
+    if (firstName) valuesToUpdate.push(`first_name = '${firstName}'`);
+    if (lastName) valuesToUpdate.push(`last_name = '${lastName}'`);
+    if (email) valuesToUpdate.push(`email = '${email}'`);
+    if (tel) valuesToUpdate.push(`tel = '${tel}'`);
+
     const updateQuery = `
-      UPDATE users
-      SET first_name = '${firstName}', last_name = '${lastName}', email = '${email}', tel = '${tel}'
-      WHERE id = ${id}
-      RETURNING *;
+    UPDATE users
+    SET ${valuesToUpdate.join(', ')}
+    WHERE id = ${id}
+    RETURNING *;
     `;
     try {
       const updatedUser = await User.pool.query(updateQuery);
