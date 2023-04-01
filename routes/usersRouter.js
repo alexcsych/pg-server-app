@@ -2,7 +2,6 @@ const { Router } = require('express');
 const { usersController } = require('../controllers');
 const { paginate, validate } = require('../middleware');
 
-// /api/users
 const usersRouter = Router();
 
 usersRouter
@@ -13,7 +12,7 @@ usersRouter
 usersRouter
   .route('/:userId')
   .get((req, res) => res.send('ok1'))
-  .patch(usersController.updateUser)
+  .patch(validate.validateUserOnUpdate, usersController.updateUser)
   .delete(usersController.deleteUser);
 
 module.exports = usersRouter;
